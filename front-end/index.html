@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Ghana Covid-19 Updates</title>
+  </head>
+  <body>
+    <div class="container-fluid" style="background-color: black;">
+       
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+            <a class="navbar-brand text-white" href="#"><strong>Covid-19</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Press Releases</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">Other releases <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">FAQs <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">About Covid-19 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">Discharge Policies <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">Latest Updates <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">Previous Updates <span class="sr-only">(current)</span></a>
+                </li>
+            </div>
+                
+          </nav>
+          <br>
+        
+
+          <!--Tracker-->
+          <div class="container">
+            <div class="row text-white text-center">
+              <div class="col bg-primary" style="height: 150px;">
+                <h3>New Cases</h3>
+                <h3><span id='ncases'></span></h3>
+              </div>
+
+              <div class="col bg-danger">
+                <h3>Confirmed Cases</h3>
+                <h3><span id="total"></span></h3>
+              </div>
+            </div>
+
+            <div class="row text-center">
+              <div class="col bg-warning text-white" style="height: 150px;">
+                <h3>Active Cases</h3>
+                <h3><span id="active"></span></h3>
+              </div>
+
+              <div class="col bg-info text-dark">
+                <h3>Recoveries/Discharged</h3>
+                <h3><span id="recovered"></span></h3>
+              </div>
+              <div class="col bg-light text-dark">
+                <h3>Deaths</h3>
+                <h3><span id="deaths"></span></h3>
+              </div>
+            </div>
+            <br>
+          </div>
+
+          
+
+      </div>
+    </div>
+
+
+
+    <script>
+        let total = document.getElementById('total');
+        let active = document.getElementById('active');
+        let ncase = document.getElementById('ncases');
+        let recovered = document.getElementById('recovered');
+        let death = document.getElementById('deaths');
+
+         fetch('http://127.0.0.1:5000/covid')
+               .then(res => res.json())
+               .then(data => {
+                   total.innerHTML = data.total;
+                   active.innerHTML = data.active;
+                   ncase.innerHTML = data.ncases;
+                   recovered.innerHTML = data.recovered;
+                   death.innerHTML = data.deaths;
+               })
+    </script>
+
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
+
