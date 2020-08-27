@@ -7,7 +7,7 @@ CORS(app)
 @app.route('/covid')
 def tracker():
     data = dict(
-        total=1300,
+        total=1500,
         active=300,
         recovered=1000,
         deaths=50,
